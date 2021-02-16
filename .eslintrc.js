@@ -11,10 +11,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: 'module',
+    tsconfigRootDir: './',
   },
   plugins: [
     '@typescript-eslint',
     'jest',
+    'plugin:import/typescript',
   ],
   rules: {
     'jest/no-disabled-tests': 'warn',
