@@ -1,10 +1,10 @@
 import { badRequest, serverError, ok, forbidden, created } from '@/presentation/helpers'
 import { MissingParamError } from '@/presentation/errors';
-import { HttpResponse } from '@/presentation/protocols';
+import { Controller, HttpResponse } from '@/presentation/contracts';
 import { CreateAccount } from '@/domain/usecases/create-account';
 import { Account } from '@/domain/entities';
 
-class SignupController {
+class SignupController implements Controller {
 
   constructor(
     private readonly usecase: CreateAccount
