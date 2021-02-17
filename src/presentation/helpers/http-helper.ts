@@ -1,5 +1,4 @@
-import UnauthorizedError from "@/presentation/errors/unauthorized-error"
-import ServerError from "@/presentation/errors/server-error"
+import { UnauthorizedError, ServerError } from "@/presentation/errors"
 
 type HttpResponse = {
   statusCode: number;
