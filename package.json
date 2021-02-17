@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsnd --ignore-watch node_modules --respawn --transpile-only tsconfig-paths/register src/main/server.ts",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "build": "rimraf dist && tsc"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
