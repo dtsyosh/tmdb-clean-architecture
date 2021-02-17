@@ -1,8 +1,14 @@
 import { badRequest, serverError, ok, forbidden, created } from '@/presentation/helpers'
-import MissingParamError from '@/presentation/errors/missing-param-error';
+import { MissingParamError } from '@/presentation/errors';
 import { HttpResponse } from '@/presentation/protocols';
+import { CreateAccount } from '@/domain/usecases/create-account';
+import { Account } from '@/domain/entities';
 
 class SignupController {
+
+  constructor(
+    private readonly usecase: CreateAccount
+  ) { }
 
   async handle(request: SignupController.Request): Promise<HttpResponse> {
     if (!request.email) {
@@ -17,9 +23,14 @@ class SignupController {
       return badRequest(new MissingParamError('passwordConfirmation'));
     }
 
-    return created({
-      accessToken: 'ok',
-    });
+    const userData = {
+      email: request.email,
+      password: request.password
+    }
+
+    const account: Account = await this.usecase.create(userData)
+
+    return created(account);
   }
 }
 

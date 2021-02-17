@@ -1,8 +1,10 @@
-import MissingParamError from '../errors/missing-param-error';
+import { MissingParamError } from '@/presentation/errors';
+import { MemoryAccountRepository } from '@/infra/repositories/memory';
 import SignupController from './signup';
 
 const makeSut = () => {
-  const sut = new SignupController();
+  const repository = new MemoryAccountRepository()
+  const sut = new SignupController(repository);
 
   return { sut };
 };
