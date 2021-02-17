@@ -13,15 +13,15 @@ class SignupController implements Controller {
   async handle(request: HttpRequest): Promise<HttpResponse> {
     const { email, password, passwordConfirmation } = request.body;
 
-    if (email) {
+    if (!email) {
       return badRequest(new MissingParamError('email'));
     }
 
-    if (password) {
+    if (!password) {
       return badRequest(new MissingParamError('password'));
     }
 
-    if (passwordConfirmation) {
+    if (!passwordConfirmation) {
       return badRequest(new MissingParamError('passwordConfirmation'));
     }
 
