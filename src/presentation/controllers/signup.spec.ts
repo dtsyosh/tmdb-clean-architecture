@@ -1,5 +1,5 @@
 import { MissingParamError } from '@/presentation/errors';
-import { MemoryAccountRepository } from '@/infra/repositories/memory';
+import { MemoryAccountRepository } from '@/infra/repositories/cache';
 import SignupController from './signup';
 
 const makeSut = () => {
