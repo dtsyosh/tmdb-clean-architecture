@@ -1,63 +1,43 @@
-import {
-  BAD_REQUEST_CODE, CREATED_CODE, OK_CODE, SERVER_ERROR_CODE,
-} from './http-status-code';
+import UnauthorizedError from "@/presentation/errors/unauthorized-error"
+import ServerError from "@/presentation/errors/server-error"
 
-export type HttpResponseParams = {
-  statusCode: number,
+type HttpResponse = {
+  statusCode: number;
   body: any
 }
 
-export interface IHttpResponse {
-  response: HttpResponseParams
-  badRequest(error: Error): HttpResponseParams
-  serverError(): HttpResponseParams
-  ok(body: any): HttpResponseParams
-  created(body: any): HttpResponseParams
-}
+export const badRequest = (error: Error): HttpResponse => ({
+  statusCode: 400,
+  body: error
+})
 
-export default class HttpResponse implements IHttpResponse {
-  response: HttpResponseParams
+export const forbidden = (error: Error): HttpResponse => ({
+  statusCode: 403,
+  body: error
+})
 
-  constructor() {
-    this.response = {
-      statusCode: 400,
-      body: undefined,
-    };
-  }
+export const unauthorized = (): HttpResponse => ({
+  statusCode: 401,
+  body: new UnauthorizedError()
+})
 
-  badRequest(error: Error): HttpResponseParams {
-    this.response = {
-      statusCode: BAD_REQUEST_CODE,
-      body: error,
-    };
+export const serverError = (error: Error): HttpResponse => ({
+  statusCode: 500,
+  body: new ServerError(error.stack)
+})
 
-    return this.response;
-  }
+export const ok = (data: any): HttpResponse => ({
+  statusCode: 200,
+  body: data
+})
 
-  serverError(): HttpResponseParams {
-    this.response = {
-      statusCode: SERVER_ERROR_CODE,
-      body: '',
-    };
+export const created = (data: any): HttpResponse => ({
+  statusCode: 201,
+  body: data
+})
 
-    return this.response;
-  }
+export const noContent = (): HttpResponse => ({
+  statusCode: 204,
+  body: null
+})
 
-  ok(body: any): HttpResponseParams {
-    this.response = {
-      statusCode: OK_CODE,
-      body,
-    };
-
-    return this.response;
-  }
-
-  created(body: any): HttpResponseParams {
-    this.response = {
-      statusCode: CREATED_CODE,
-      body,
-    };
-
-    return this.response;
-  }
-}

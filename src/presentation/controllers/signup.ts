@@ -1,35 +1,33 @@
-import { MissingParamError } from '../errors';
-import { IHttpResponse, HttpResponseParams } from '../helpers/http-response';
-
-type HttpRequest = {
-  email: String,
-  password: String,
-  passwordConfirmation: String
-}
+import { badRequest, serverError, ok, forbidden, created } from '@/presentation/helpers'
+import MissingParamError from '@/presentation/errors/missing-param-error';
+import { HttpResponse } from '@/presentation/protocols';
 
 class SignupController {
-  httpResponse: IHttpResponse;
 
-  constructor(httpResponse: IHttpResponse) {
-    this.httpResponse = httpResponse;
-  }
-
-  async handle(httpRequest: HttpRequest): Promise<HttpResponseParams> {
-    if (!httpRequest.email) {
-      return this.httpResponse.badRequest(new MissingParamError('email'));
+  async handle(request: SignupController.Request): Promise<HttpResponse> {
+    if (!request.email) {
+      return badRequest(new MissingParamError('email'));
     }
 
-    if (!httpRequest.password) {
-      return this.httpResponse.badRequest(new MissingParamError('password'));
+    if (!request.password) {
+      return badRequest(new MissingParamError('password'));
     }
 
-    if (!httpRequest.passwordConfirmation) {
-      return this.httpResponse.badRequest(new MissingParamError('passwordConfirmation'));
+    if (!request.passwordConfirmation) {
+      return badRequest(new MissingParamError('passwordConfirmation'));
     }
 
-    return this.httpResponse.created({
+    return created({
       accessToken: 'ok',
     });
+  }
+}
+
+export namespace SignupController {
+  export type Request = {
+    email: string
+    password: string
+    passwordConfirmation: string
   }
 }
 
