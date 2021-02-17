@@ -8,7 +8,7 @@
 
 ## Use cases
 
-- [ ] Create an account
+- [x] Create an account
 - [ ] Login with credentials
 - [ ] Login with social media
 - [ ] Create profile
