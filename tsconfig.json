@@ -8,10 +8,10 @@
     "rootDirs": [
       "src"
     ],
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "*"
+        "src/*"
       ]
     }
   },
