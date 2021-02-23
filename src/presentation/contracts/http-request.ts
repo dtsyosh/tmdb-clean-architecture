@@ -1,5 +1,5 @@
 export type HttpRequest = {
-  body: any,
+  body?: any,
   query?: any,
   headers?: any,
   params?: any
