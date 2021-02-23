@@ -1,5 +1,7 @@
 # TMDB API Implementation
 
+The goal of this implementation is to practice new technologies/design patterns like Typescript and Clean Architecture.
+
 ## Domain
 
 - Account
@@ -21,3 +23,9 @@
 - [ ] Share watched movie
 - [ ] Schedule to watch movie
 - [ ] Send notification email
+
+## External 
+- Express
+- Axios
+- TMDB Api (as data source)
+- Database = TBD 
