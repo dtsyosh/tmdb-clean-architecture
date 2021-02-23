@@ -8,7 +8,7 @@ export class CreateAccountUseCase implements CreateAccount {
   ) { }
 
 
-  async create(account: Account): Promise<Account> {
+  async perform(account: Account): Promise<Account> {
     return await this.accountRepository.create(account);
   }
 

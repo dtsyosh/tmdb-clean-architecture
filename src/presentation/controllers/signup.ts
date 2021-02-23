@@ -30,7 +30,7 @@ class SignupController implements Controller {
       password
     }
 
-    const account: Account = await this.usecase.create(userData)
+    const account: Account = await this.usecase.perform(userData)
 
     return created(account);
   }
