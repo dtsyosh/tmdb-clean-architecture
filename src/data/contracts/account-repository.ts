@@ -1,9 +1,8 @@
 import { Account } from "@/domain/entities"
-import { AccountModel } from "../models";
 
 export interface AccountRepository {
-  create: (data: Account) => Promise<AccountModel>
-  findAll: () => Promise<AccountModel[]>
-  findOne: (id: number) => Promise<AccountModel>
-  findOneByEmail: (email: string) => Promise<AccountModel>
+  create: (data: Account) => Promise<Account>
+  findAll: () => Promise<Account[]>
+  findOne: (id: number) => Promise<Account>
+  findOneByEmail: (email: string) => Promise<Account>
 }

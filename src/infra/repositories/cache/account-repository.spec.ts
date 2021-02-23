@@ -16,14 +16,6 @@ describe('In memory account repository', () => {
     expect(accounts).toEqual(inMemoryAccounts);
   });
 
-  it('should return an account with the id provided', async () => {
-    const { sut } = makeSut();
-    const id = 3;
-    const account = await sut.findOne(id);
-
-    expect(account.id).toBe(3);
-  });
-
   it('should return an account with the email provided', async () => {
     const { sut } = makeSut();
     const email = 'teste2@email.com';

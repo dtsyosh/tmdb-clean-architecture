@@ -1,24 +1,24 @@
 import { AccountRepository } from "@/data/contracts/account-repository";
+import { Account } from "@/domain/entities";
 import memoryAccounts from './accounts.json';
-import { AccountModel } from "@/data/models";
 
 export class MemoryAccountRepository implements AccountRepository {
-  public accounts: Array<AccountModel>
+  public accounts: Account[]
 
   constructor() {
     this.accounts = memoryAccounts;
   }
+  findOne: (id: number) => Promise<Account>;
 
-  async findAll(): Promise<AccountModel[]> {
+  async findAll(): Promise<Account[]> {
     return this.accounts;
   };
 
-  async create(data: Omit<AccountModel, 'id'>): Promise<AccountModel> {
-    const lastAccount: AccountModel = this.accounts.slice(-1)[0];
+  async create(data: Account): Promise<Account> {
+    const lastAccount: Account = this.accounts.slice(-1)[0];
 
     const newAccount = {
       ...data,
-      id: lastAccount.id + 1
     };
 
     this.accounts = [...this.accounts, newAccount];
@@ -26,11 +26,7 @@ export class MemoryAccountRepository implements AccountRepository {
     return newAccount;
   };
 
-  async findOne(id: number): Promise<AccountModel> {
-    return this.accounts.find(account => account.id === id);
-  }
-
-  async findOneByEmail(email: string): Promise<AccountModel> {
+  async findOneByEmail(email: string): Promise<Account> {
     return this.accounts.find(account => account.email === email);
   };
 }
