@@ -17,7 +17,7 @@ export const setupRoutes = (app: Express): void => {
 
     if (process.env.NODE_ENV === 'local') {
       const { route } = await import(`../routes/${filename}`);
-      console.log(`${route.method} ${route.path}`);
+      console.log(`${route.method} /api${route.path}`);
     }
 
     (await import(`../routes/${filename}`)).default(router)
