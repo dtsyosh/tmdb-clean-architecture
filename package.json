@@ -38,6 +38,6 @@
     "yamljs": "^0.3.0"
   },
   "_moduleAliases": {
-    "@": "src"
+    "@": "dist"
   }
 }
