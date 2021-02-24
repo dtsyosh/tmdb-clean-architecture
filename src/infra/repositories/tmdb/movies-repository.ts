@@ -3,6 +3,7 @@ import { MovieRepository } from "@/data/contracts/movie-repository";
 import { Movie } from "@/domain/entities/movie";
 
 export class TMDBMoviesRepository implements MovieRepository {
+  private readonly TMDB_IMAGE_BASE = process.env.TMDB_IMAGE_BASE;
   constructor(
     private readonly httpClient: AxiosInstance
   ) { }
@@ -23,7 +24,8 @@ export class TMDBMoviesRepository implements MovieRepository {
     return results.map(movie => ({
       title: movie.original_title,
       adult: movie.adult,
-      overview: movie.overview ?? ''
+      overview: movie.overview,
+      poster: this.TMDB_IMAGE_BASE + movie.poster_path
     }));
   }
 }

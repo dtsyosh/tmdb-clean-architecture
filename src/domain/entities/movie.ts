@@ -1,5 +1,6 @@
 export type Movie = {
   title: string;
   adult: boolean;
-  overview: string;
+  overview?: string;
+  poster?: string;
 }
