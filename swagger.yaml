@@ -1,0 +1,57 @@
+openapi: 3.0.0
+
+info:
+  title: TMDB API
+  description: An implementation of TMDB API using Clean Architecture, Typescript and NodeJS
+  version: "1.0"
+  contact:
+    name: Diego Tsuyoshi
+    email: diego.tsuyoshi@outlook.com
+
+servers:
+  - url: http://localhost:4000/api
+    description: Development
+  - url: http://tsuyoshi-tmdbapi.herokuapp.com/api
+    description: Staging
+
+paths:
+  /movies:
+    get:
+      tags:
+        - Movie
+      description: Search movies by a provided term
+      summary: Search movies by a provided term
+      parameters:
+        - in: query
+          name: term
+          description: The search term
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: An array of movies
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Movie"
+
+components:
+  schemas:
+    Movie:
+      type: object
+      properties:
+        title:
+          type: string
+        adult:
+          type: boolean
+        overview:
+          type: string
+        poster:
+          type: string
+
+tags:
+  - name: Movie
+    description: All endpoints that are movie related
