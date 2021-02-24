@@ -9,7 +9,8 @@ export const setupRoutes = (app: Express): void => {
 
   app.get('*', (req: Request, res: Response) => {
     res.status(404).json({
-      message: 'Route not found.'
+      error: 'Route not found.',
+      message: 'Available routes are on /docs endpoint'
     });
   });
 
