@@ -13,12 +13,9 @@ class SignupController implements Controller {
   async handle(request: HttpRequest): Promise<HttpResponse> {
     const { email, password, passwordConfirmation } = request.body;
 
-    if (!email) {
-      return badRequest(new MissingParamError('email'));
-    }
-
-    if (!password) {
-      return badRequest(new MissingParamError('password'));
+    if (!email || !password) {
+      const field = !request.body.email ? 'email' : 'password';
+      return badRequest(new MissingParamError(field));
     }
 
     if (!passwordConfirmation) {
@@ -30,9 +27,7 @@ class SignupController implements Controller {
       password
     }
 
-    const account: Account = await this.usecase.perform(userData)
-
-    return created(account);
+    return created(await this.usecase.perform(userData));
   }
 }
 
