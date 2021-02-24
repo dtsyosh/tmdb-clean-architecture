@@ -15,7 +15,7 @@ export class SearchMovieByTermController implements Controller {
       return badRequest(new MissingParamError('term'));
     }
 
-    const movies = await this.usecase.perform("");
+    const movies = await this.usecase.perform(term);
 
     return ok(movies);
   }
