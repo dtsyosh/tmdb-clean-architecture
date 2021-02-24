@@ -39,7 +39,7 @@ describe('Signup Controller', () => {
 
     const httpResponse = await sut.handle(httpRequest);
 
-    expect(httpResponse.body).toEqual(new MissingParamError('email'));
+    expect(httpResponse.body).toHaveProperty('error');
   });
 
   it('Should return 400 if a password is not provided', async () => {
@@ -47,14 +47,13 @@ describe('Signup Controller', () => {
     const httpRequest = {
       body: {
         email: 'any_email@email.com',
-        password: null,
         passwordConfirmation: null,
       }
     };
 
     const httpResponse = await sut.handle(httpRequest);
 
-    expect(httpResponse.body).toEqual(new MissingParamError('password'));
+    expect(httpResponse.body).toHaveProperty('error');
   });
 
   it('Should return 400 if a passwordConfirmation is not provided', async () => {
@@ -63,12 +62,11 @@ describe('Signup Controller', () => {
       body: {
         email: 'any_email@email.com',
         password: 'any_password',
-        passwordConfirmation: null
       }
     };
 
     const httpResponse = await sut.handle(httpRequest);
 
-    expect(httpResponse.body).toEqual(new MissingParamError('passwordConfirmation'));
+    expect(httpResponse.body).toHaveProperty('error');
   });
 });
