@@ -45,12 +45,16 @@ components:
       properties:
         title:
           type: string
+          example: "Fast & Furious 10"
         adult:
           type: boolean
+          example: false
         overview:
           type: string
+          example: Tenth and penultimate installment of the Fast and Furious franchise.
         poster:
           type: string
+          example: https://image.tmdb.org/t/p/original/2DyEk84XnbJEdPlGF43crxfdtHH.jpg
 
 tags:
   - name: Movie
