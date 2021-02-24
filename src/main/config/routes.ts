@@ -14,12 +14,6 @@ export const setupRoutes = (app: Express): void => {
   });
 
   readdirSync(`${__dirname}/../routes`).map(async filename => {
-
-    if (process.env.NODE_ENV === 'local') {
-      const { route } = await import(`../routes/${filename}`);
-      console.log(`${route.method} /api${route.path}`);
-    }
-
     (await import(`../routes/${filename}`)).default(router)
   });
 }
