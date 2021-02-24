@@ -16,7 +16,7 @@ The goal of this implementation is to practice new technologies/design patterns 
 - [ ] Create profile
 - [ ] List profiles
 - [ ] List suggested movies
-- [ ] Search movies
+- [x] Search movies
 - [ ] Add movie to watch list
 - [ ] Get watch list
 - [ ] Add movie to watched list
@@ -24,8 +24,9 @@ The goal of this implementation is to practice new technologies/design patterns 
 - [ ] Schedule to watch movie
 - [ ] Send notification email
 
-## External 
+## External
+
 - Express
 - Axios
 - TMDB Api (as data source)
-- Database = TBD 
+- Database = TBD
