@@ -1,6 +1,7 @@
 import { SearchMovieByTermUseCase } from "../../data/usecases/search-movie-by-term";
 import { Controller, HttpRequest, HttpResponse } from "../contracts";
-import { ok } from "../helpers";
+import { MissingParamError } from "../errors";
+import { badRequest, ok } from "../helpers";
 
 export class SearchMovieByTermController implements Controller {
   constructor(
@@ -8,7 +9,13 @@ export class SearchMovieByTermController implements Controller {
   ) { }
 
   async handle(request: HttpRequest): Promise<HttpResponse> {
-    const movies = await this.usecase.perform(request.query.term);
+    const { term } = request.query;
+
+    if (!term) {
+      return badRequest(new MissingParamError('term'));
+    }
+
+    const movies = await this.usecase.perform("");
 
     return ok(movies);
   }
