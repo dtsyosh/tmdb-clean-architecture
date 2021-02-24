@@ -11,7 +11,7 @@ info:
 servers:
   - url: http://localhost:4000/api
     description: Development
-  - url: http://tsuyoshi-tmdbapi.herokuapp.com/api
+  - url: http://tmdb-clean-architecture.vercel.com/api
     description: Staging
 
 paths:
