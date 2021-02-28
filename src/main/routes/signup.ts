@@ -1,7 +1,7 @@
 
-import { adaptRoute } from '@/main/adapters/express-router';
+import { adaptRoute } from '@/main/adapters/koa-router';
 import { makeSignupController } from '@/main/factories';
-import { Router } from 'express';
+import Router from 'koa-router';
 
 
 export default (router: Router): void => {
