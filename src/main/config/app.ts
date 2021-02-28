@@ -1,11 +1,11 @@
 import { config } from 'dotenv';
 import { setupRoutes } from './routes';
-import express from 'express';
+import Koa from 'koa';
 import { setupMiddlewares } from './middlewares';
 
 config();
 
-const app = express();
+const app = new Koa();
 
 setupMiddlewares(app);
 setupRoutes(app);

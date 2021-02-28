@@ -27,6 +27,7 @@ The goal of this implementation is to practice new technologies/design patterns 
 ## External
 
 - Express
+- Koa
 - Axios
 - TMDB Api (as data source)
 - Database = TBD

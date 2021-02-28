@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs",
-    "target": "es2019",
+    "target": "es2015",
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "rootDirs": [
@@ -19,6 +19,7 @@
     "src"
   ],
   "exclude": [
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/*.test.ts",
   ]
 }
