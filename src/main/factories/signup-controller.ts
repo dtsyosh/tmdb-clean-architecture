@@ -1,6 +1,6 @@
 import { Controller } from "@/presentation/contracts";
 import { MemoryAccountRepository } from "@/infra/repositories/cache";
-import SignupController from "@/presentation/controllers/signup";
+import { SignupController } from "@/presentation/controllers/signup";
 import { CreateAccountUseCase } from "@/data/usecases/create-account";
 
 export const makeSignupController = (): Controller => {

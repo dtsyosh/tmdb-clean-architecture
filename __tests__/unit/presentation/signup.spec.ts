@@ -1,7 +1,7 @@
 import { MissingParamError } from '@/presentation/errors';
 import { MemoryAccountRepository } from '@/infra/repositories/cache';
 import { CreateAccountUseCase } from '@/data/usecases';
-import SignupController from './signup';
+import { SignupController } from '@/presentation/controllers';
 
 const makeSut = () => {
   const repository = new MemoryAccountRepository();

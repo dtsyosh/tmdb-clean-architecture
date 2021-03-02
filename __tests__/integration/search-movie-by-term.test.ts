@@ -1,5 +1,5 @@
 import request from 'supertest';
-import app from '../../src/main/config/app';
+import app from '../../src/main/server';
 
 describe('GET /api/movies', () => {
   it('Should return a list of movies when term is provided', async () => {

@@ -4,7 +4,7 @@ import { Controller, HttpRequest, HttpResponse } from '@/presentation/contracts'
 import { CreateAccount } from '@/domain/usecases/create-account';
 import { Account } from '@/domain/entities';
 
-class SignupController implements Controller {
+export class SignupController implements Controller {
 
   constructor(
     private readonly usecase: CreateAccount
@@ -30,13 +30,3 @@ class SignupController implements Controller {
     return created(await this.usecase.perform(userData));
   }
 }
-
-export namespace SignupController {
-  export type Request = {
-    email: string
-    password: string
-    passwordConfirmation: string
-  }
-}
-
-export default SignupController;
