@@ -1,9 +1,9 @@
-import { UnauthorizedError, ServerError } from "@/presentation/errors"
+import { UnauthorizedError, ServerError } from '@/presentation/errors';
 
 type HttpResponse = {
   statusCode: number;
-  body: any
-}
+  body: any;
+};
 
 export const badRequest = (error: Error): HttpResponse => ({
   statusCode: 400,
@@ -11,7 +11,7 @@ export const badRequest = (error: Error): HttpResponse => ({
     error: error.name,
     message: error.message
   }
-})
+});
 
 export const forbidden = (error: Error): HttpResponse => ({
   statusCode: 403,
@@ -19,30 +19,29 @@ export const forbidden = (error: Error): HttpResponse => ({
     error: error.name,
     message: error.message
   }
-})
+});
 
 export const unauthorized = (): HttpResponse => ({
   statusCode: 401,
   body: new UnauthorizedError()
-})
+});
 
 export const serverError = (error: Error): HttpResponse => ({
   statusCode: 500,
   body: new ServerError(error.stack)
-})
+});
 
 export const ok = (data: any): HttpResponse => ({
   statusCode: 200,
   body: data
-})
+});
 
 export const created = (data: any): HttpResponse => ({
   statusCode: 201,
   body: data
-})
+});
 
 export const noContent = (): HttpResponse => ({
   statusCode: 204,
   body: null
-})
-
+});

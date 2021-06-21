@@ -10,4 +10,4 @@ describe('TMDB Axios client', () => {
     expect(response.data).toHaveProperty('id');
     expect(response.data.id).toBe(500);
   });
-})
+});

@@ -6,7 +6,7 @@ const makeSut = () => {
   return {
     sut
   };
-}
+};
 
 describe('In memory account repository', () => {
   it('should return a list with all accounts', async () => {
@@ -29,11 +29,12 @@ describe('In memory account repository', () => {
 
     const accountData = {
       email: 'any_email@mail.com',
-      password: 'any_password'
-    }
+      password: 'any_password',
+      profiles: []
+    };
 
     await sut.create(accountData);
 
     expect(sut.accounts).toHaveLength(inMemoryAccounts.length + 1);
   });
-})
+});

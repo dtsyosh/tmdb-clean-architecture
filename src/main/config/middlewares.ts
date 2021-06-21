@@ -7,15 +7,15 @@ import { koaSwagger } from 'koa2-swagger-ui';
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 export const setupMiddlewares = async (app: Koa) => {
-
   if (process.env.NODE_ENV === 'local') {
     app.use(logger());
   }
   app.use(json());
 
-  app.use(koaSwagger({
-    routePrefix: '/docs',
-    swaggerOptions: { spec: swaggerDocument }
-  }))
-
-}
+  app.use(
+    koaSwagger({
+      routePrefix: '/docs',
+      swaggerOptions: { spec: swaggerDocument }
+    })
+  );
+};

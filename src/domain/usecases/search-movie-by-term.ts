@@ -1,5 +1,5 @@
-import { Movie } from "../entities/movie";
+import { Movie } from '../entities/movie';
 
 export interface SearchMovieByTerm {
-  perform: (term: string) => Promise<Movie[]>
+  perform: (term: string) => Promise<Movie[]>;
 }
