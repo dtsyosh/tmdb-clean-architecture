@@ -1,7 +1,7 @@
-import { Controller } from '@/presentation/contracts';
-import { MemoryAccountRepository } from '@/infra/repositories/cache';
-import { SignupController } from '@/presentation/controllers/signup';
-import { CreateAccountUseCase } from '@/data/usecases/create-account';
+import { CreateAccountUseCase } from "@/data/usecases/create-account";
+import { MemoryAccountRepository } from "@/infra/repositories/cache";
+import { Controller } from "@/presentation/contracts";
+import { SignupController } from "@/presentation/controllers/signup";
 
 export const makeSignupController = (): Controller => {
   const repository = new MemoryAccountRepository();
@@ -9,4 +9,4 @@ export const makeSignupController = (): Controller => {
   const signupController = new SignupController(createAccountUseCase);
 
   return signupController;
-};
+}
