@@ -5,7 +5,12 @@ import AccountModel from './models/account';
 export default class MongoAccountRepository implements AccountRepository {
   findAll: () => Promise<Account[]>;
   findOne: (id: number) => Promise<Account>;
-  findOneByEmail: (email: string) => Promise<Account>;
+
+  async findOneByEmail(email: string): Promise<Account | undefined> {
+    return AccountModel.findOne({
+      email
+    })
+  };
 
   async create(payload: Account): Promise<Account> {
     const { email, password } = payload;

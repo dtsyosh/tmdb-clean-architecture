@@ -1,13 +1,18 @@
 import { config } from 'dotenv';
-import { setupRoutes } from './routes';
 import Koa from 'koa';
+import { setupDatabase } from './database';
 import { setupMiddlewares } from './middlewares';
+import { setupRoutes } from './routes';
 
 config();
 
 const app = new Koa();
 
-setupMiddlewares(app);
-setupRoutes(app);
+(async () => {
+  await setupDatabase();
+  await setupMiddlewares(app);
+  await setupRoutes(app);
+})()
+
 
 export default app;
