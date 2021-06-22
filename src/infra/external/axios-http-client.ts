@@ -8,4 +8,3 @@ export const TMDBClient = axios.create({
     api_key: process.env.TMDB_API_KEY
   }
 });
-

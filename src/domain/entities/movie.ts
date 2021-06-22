@@ -3,4 +3,4 @@ export type Movie = {
   adult: boolean;
   overview?: string;
   poster?: string;
-}
+};

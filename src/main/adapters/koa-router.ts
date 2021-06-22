@@ -3,7 +3,12 @@ import { Context } from 'koa';
 
 export const adaptRoute = (controller: Controller) => {
   return async (ctx: Context) => {
-    const { request: { body }, query, headers, params } = ctx;
+    const {
+      request: { body },
+      query,
+      headers,
+      params
+    } = ctx;
 
     const request: HttpRequest = {
       body,
@@ -15,6 +20,6 @@ export const adaptRoute = (controller: Controller) => {
     const httpResponse = await controller.handle(request);
 
     ctx.status = httpResponse.statusCode;
-    ctx.body = httpResponse.body
-  }
-}
+    ctx.body = httpResponse.body;
+  };
+};

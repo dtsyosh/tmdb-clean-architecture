@@ -1,4 +1,4 @@
-import { Controller, HttpRequest } from "@/presentation/contracts";
+import { Controller, HttpRequest } from '@/presentation/contracts';
 
 import { Request, Response } from 'express';
 
@@ -11,8 +11,8 @@ export const adaptRoute = (controller: Controller) => {
       params,
       query,
       headers
-    }
+    };
     const httpResponse = await controller.handle(request);
     res.status(httpResponse.statusCode).json(httpResponse.body);
-  }
-}
+  };
+};

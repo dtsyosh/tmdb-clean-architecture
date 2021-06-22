@@ -1,6 +1,6 @@
-import { Controller } from "@/presentation/contracts";
-import { TMDBMoviesRepository } from "@/infra/repositories/tmdb";
 import { TMDBClient } from "@/infra/external";
+import { TMDBMoviesRepository } from "@/infra/repositories/tmdb";
+import { Controller } from "@/presentation/contracts";
 import { SearchMovieByTermUseCase } from "../../data/usecases";
 import { SearchMovieByTermController } from "../../presentation/controllers";
 

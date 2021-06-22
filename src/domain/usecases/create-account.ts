@@ -1,5 +1,5 @@
-import { Account } from "@/domain/entities"
+import { Account } from '@/domain/entities';
 
 export interface CreateAccount {
-  perform: (account: Account) => Promise<Account>
+  perform: (account: Account) => Promise<Account>;
 }
